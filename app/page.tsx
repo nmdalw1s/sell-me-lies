@@ -197,9 +197,9 @@ export default function Home() {
               </h1>
 
               <p className="mt-8 mx-auto max-w-[560px] font-[var(--font-inter)] text-base font-medium uppercase tracking-[0.08em] text-[#f3ede3]/92 sm:text-lg sm:leading-8 lg:mx-0 lg:text-xl lg:leading-9">
-                THE LIES BEHIND THE ALGORITHMS
-                <br className="hidden sm:block" />
-                THAT SHAPE WHAT WE WANT AND BUY
+              THE LIES BEHIND THE ALGORITHMS{" "}
+              <br className="hidden sm:block" />
+              THAT SHAPE WHAT WE WANT AND BUY
               </p>
 
               <div className="mt-10">
