@@ -62,6 +62,7 @@ function Counter({
 }
 
 export default function Home() {
+  const base = process.env.NODE_ENV === "production" ? "/sell-me-lies" : "";
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
   const [startCounters, setStartCounters] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -108,21 +109,21 @@ export default function Home() {
     <div className="absolute right-0 mt-3 w-64 rounded-xl bg-[#173739]/95 p-4 shadow-xl backdrop-blur-md">
       <nav className="flex flex-col gap-4">
         <a
-          href="/about"
+          href={`${base}/about`}
           className="font-[var(--font-inter)] text-xs font-semibold uppercase tracking-[0.2em] text-[#f3ede3]/95 transition hover:opacity-70"
           onClick={() => setMenuOpen(false)}
         >
           About
         </a>
         <a
-          href="/score-report"
+          href={`${base}/score-report`}
           className="font-[var(--font-inter)] text-xs font-semibold uppercase tracking-[0.2em] text-[#f3ede3]/95 transition hover:opacity-70"
           onClick={() => setMenuOpen(false)}
         >
           Try the Score Report
         </a>
         <a
-          href="/have-a-lie"
+          href={`${base}/have-a-lie`}
           className="font-[var(--font-inter)] text-xs font-semibold uppercase tracking-[0.2em] text-[#f3ede3]/95 transition hover:opacity-70"
           onClick={() => setMenuOpen(false)}
         >
@@ -155,7 +156,7 @@ export default function Home() {
         <div className="relative overflow-hidden border-r border-[#173739]/10">
           <div className="absolute inset-0">
             <img
-              src="/hero.jpg"
+              src={`${base}/hero.jpg`}
               alt="Sell Me Lies hero"
               className="h-full w-full object-cover"
             />
@@ -192,9 +193,9 @@ export default function Home() {
               </h1>
 
               <p className="mt-8 mx-auto max-w-[560px] font-[var(--font-inter)] text-base font-medium uppercase tracking-[0.08em] text-[#f3ede3]/92 drop-shadow-[0_2px_14px_rgba(0,0,0,0.55)] sm:text-lg sm:leading-8 lg:mx-0 lg:text-xl lg:leading-9">
-              THE LIES BEHIND THE ALGORITHMS
-              <br className="hidden sm:block" />
-              THAT SHAPE WHAT WE WANT AND BUY
+                THE LIES BEHIND THE ALGORITHMS
+                <br className="hidden sm:block" />
+                THAT SHAPE WHAT WE WANT AND BUY
               </p>
 
               <div className="mt-10">
@@ -213,7 +214,7 @@ export default function Home() {
                       className="flex h-14 w-14 items-center justify-center rounded-md bg-[#cfa85e] transition hover:opacity-90"
                     >
                       <img
-                        src={x.src}
+                        src={`${base}${x.src}`}
                         alt={x.label}
                         className="h-6 w-6 object-contain brightness-0 invert"
                       />
@@ -229,17 +230,20 @@ export default function Home() {
         <div className="relative flex flex-col bg-[#f3ede3] px-6 py-8 sm:px-10 sm:py-12 lg:px-12 lg:py-12">
           {/* DESKTOP / SIDE-BY-SIDE NAV */}
           <div className="mb-14 hidden items-start justify-center gap-6 font-[var(--font-inter)] text-xs font-semibold uppercase tracking-[0.16em] text-[#173739]/70 lg:flex xl:gap-10 xl:text-sm xl:tracking-[0.2em]">
-            <a href="/about" className="whitespace-nowrap transition hover:opacity-60">
+            <a
+              href={`${base}/about`}
+              className="whitespace-nowrap transition hover:opacity-60"
+            >
               About
             </a>
             <a
-              href="/score-report"
+              href={`${base}/score-report`}
               className="whitespace-nowrap transition hover:opacity-60"
             >
               Try the Score Report
             </a>
             <a
-              href="/have-a-lie"
+              href={`${base}/have-a-lie`}
               className="whitespace-nowrap transition hover:opacity-60"
             >
               Have a Lie? Tell Us
