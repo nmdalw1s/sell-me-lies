@@ -63,6 +63,7 @@ function Counter({
 
 export default function Home() {
   const base = process.env.NODE_ENV === "production" ? "/sell-me-lies" : "";
+
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
   const [startCounters, setStartCounters] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -151,9 +152,11 @@ export default function Home() {
 
   return (
     <main className={`${inter.variable} min-h-screen bg-[#f3ede3] text-[#173739]`}>
-      <section className="grid min-h-screen grid-cols-1 lg:grid-cols-2">
+      <section className="grid min-h-[100svh] grid-cols-1 lg:min-h-screen lg:grid-cols-2">
+
         {/* LEFT SIDE */}
         <div className="relative overflow-hidden border-r border-[#173739]/10">
+
           <div className="absolute inset-0">
             <img
               src={`${base}/hero.jpg`}
@@ -163,7 +166,7 @@ export default function Home() {
             <div className="absolute inset-0 bg-[#173739]/80" />
           </div>
 
-          {/* GREEN-SIDE HAMBURGER: ONLY WHEN STACKED */}
+          {/* MOBILE MENU */}
           <div className="relative z-20 flex w-full justify-end px-6 pt-6 lg:hidden">
             <div className="relative">
               <MenuButton />
@@ -172,18 +175,19 @@ export default function Home() {
           </div>
 
           {/* HERO CONTENT */}
-          <div className="relative z-10 flex min-h-screen items-center">
-            <div className="mx-auto w-full max-w-[760px] px-6 py-12 text-[#f3ede3] sm:px-10 sm:py-16 lg:px-10 lg:py-16 text-center lg:text-left">
-              <p className="mb-3 font-[var(--font-inter)] text-base font-medium uppercase tracking-[0.24em] text-[#e2bf72] drop-shadow-[0_2px_14px_rgba(0,0,0,0.55)]">
+          <div className="relative z-10 flex min-h-[100svh] items-start lg:min-h-screen lg:items-center">
+            <div className="mx-auto w-full max-w-[760px] px-6 pt-28 pb-12 text-[#f3ede3] sm:px-10 sm:pt-32 sm:pb-16 lg:px-10 lg:py-16 text-center lg:text-left">
+
+              <p className="mb-3 font-[var(--font-inter)] text-base font-medium uppercase tracking-[0.24em] text-[#e2bf72]">
                 Now Streaming
               </p>
 
-              <p className="mb-6 font-[var(--font-inter)] text-base uppercase tracking-[0.24em] text-[#f3ede3]/85 drop-shadow-[0_2px_14px_rgba(0,0,0,0.55)]">
+              <p className="mb-6 font-[var(--font-inter)] text-base uppercase tracking-[0.24em] text-[#f3ede3]/85">
                 A Podcast by Neth
               </p>
 
               <h1
-                className={`${playfair.className} font-medium leading-[0.88] tracking-[-0.02em] drop-shadow-[0_2px_18px_rgba(0,0,0,0.6)] text-6xl sm:text-7xl lg:text-[96px]`}
+                className={`${playfair.className} font-medium leading-[0.88] tracking-[-0.02em] text-6xl sm:text-7xl lg:text-[96px]`}
               >
                 NEW LIES
                 <br />
@@ -192,14 +196,15 @@ export default function Home() {
                 SATURDAY
               </h1>
 
-              <p className="mt-8 mx-auto max-w-[560px] font-[var(--font-inter)] text-base font-medium uppercase tracking-[0.08em] text-[#f3ede3]/92 drop-shadow-[0_2px_14px_rgba(0,0,0,0.55)] sm:text-lg sm:leading-8 lg:mx-0 lg:text-xl lg:leading-9">
+              <p className="mt-8 mx-auto max-w-[560px] font-[var(--font-inter)] text-base font-medium uppercase tracking-[0.08em] text-[#f3ede3]/92 sm:text-lg sm:leading-8 lg:mx-0 lg:text-xl lg:leading-9">
                 THE LIES BEHIND THE ALGORITHMS
                 <br className="hidden sm:block" />
                 THAT SHAPE WHAT WE WANT AND BUY
               </p>
 
               <div className="mt-10">
-                <p className="mb-4 font-[var(--font-inter)] text-sm font-medium uppercase tracking-[0.26em] text-[#e2bf72] drop-shadow-[0_2px_14px_rgba(0,0,0,0.55)]">
+
+                <p className="mb-4 font-[var(--font-inter)] text-sm font-medium uppercase tracking-[0.26em] text-[#e2bf72]">
                   Follow Wherever You Listen
                 </p>
 
@@ -210,7 +215,6 @@ export default function Home() {
                       href={x.href}
                       target="_blank"
                       rel="noreferrer"
-                      aria-label={x.label}
                       className="flex h-14 w-14 items-center justify-center rounded-md bg-[#cfa85e] transition hover:opacity-90"
                     >
                       <img
@@ -221,6 +225,7 @@ export default function Home() {
                     </a>
                   ))}
                 </div>
+
               </div>
             </div>
           </div>
@@ -228,29 +233,22 @@ export default function Home() {
 
         {/* RIGHT SIDE */}
         <div className="relative flex flex-col bg-[#f3ede3] px-6 py-8 sm:px-10 sm:py-12 lg:px-12 lg:py-12">
-          {/* DESKTOP / SIDE-BY-SIDE NAV */}
-          <div className="mb-14 hidden items-start justify-center gap-6 font-[var(--font-inter)] text-xs font-semibold uppercase tracking-[0.16em] text-[#173739]/70 lg:flex xl:gap-10 xl:text-sm xl:tracking-[0.2em]">
-            <a
-              href={`${base}/about`}
-              className="whitespace-nowrap transition hover:opacity-60"
-            >
+
+          {/* DESKTOP NAV */}
+          <div className="mb-14 hidden justify-center gap-10 font-[var(--font-inter)] text-sm font-semibold uppercase tracking-[0.2em] text-[#173739]/70 lg:flex">
+            <a href={`${base}/about`} className="transition hover:opacity-60">
               About
             </a>
-            <a
-              href={`${base}/score-report`}
-              className="whitespace-nowrap transition hover:opacity-60"
-            >
+            <a href={`${base}/score-report`} className="transition hover:opacity-60">
               Try the Score Report
             </a>
-            <a
-              href={`${base}/have-a-lie`}
-              className="whitespace-nowrap transition hover:opacity-60"
-            >
+            <a href={`${base}/have-a-lie`} className="transition hover:opacity-60">
               Have a Lie? Tell Us
             </a>
           </div>
 
           <div className="my-auto mx-auto w-full max-w-[860px]">
+
             <div className="overflow-hidden rounded-[24px] bg-[#173739] min-h-[352px]">
               <iframe
                 ref={iframeRef}
@@ -268,11 +266,12 @@ export default function Home() {
             </p>
 
             <div className="mt-6 grid grid-cols-3 border-t border-[#173739]/10 pt-6 text-center">
+
               <div>
                 <p className="font-[var(--font-inter)] text-3xl font-semibold sm:text-4xl">
                   <Counter to={2387} start={startCounters} duration={2600} delay={650} />
                 </p>
-                <p className="mt-1 font-[var(--font-inter)] text-[10px] uppercase tracking-[0.24em] text-[#173739]/60 sm:text-xs">
+                <p className="mt-1 font-[var(--font-inter)] text-xs uppercase tracking-[0.24em] text-[#173739]/60">
                   Plays
                 </p>
               </div>
@@ -281,7 +280,7 @@ export default function Home() {
                 <p className="font-[var(--font-inter)] text-3xl font-semibold sm:text-4xl">
                   <Counter to={242} start={startCounters} duration={2600} delay={650} />
                 </p>
-                <p className="mt-1 font-[var(--font-inter)] text-[10px] uppercase tracking-[0.24em] text-[#173739]/60 sm:text-xs">
+                <p className="mt-1 font-[var(--font-inter)] text-xs uppercase tracking-[0.24em] text-[#173739]/60">
                   Downloads
                 </p>
               </div>
@@ -290,10 +289,11 @@ export default function Home() {
                 <p className="font-[var(--font-inter)] text-3xl font-semibold sm:text-4xl">
                   <Counter to={3} start={startCounters} duration={1200} delay={650} />
                 </p>
-                <p className="mt-1 font-[var(--font-inter)] text-[10px] uppercase tracking-[0.24em] text-[#173739]/60 sm:text-xs">
+                <p className="mt-1 font-[var(--font-inter)] text-xs uppercase tracking-[0.24em] text-[#173739]/60">
                   Episodes
                 </p>
               </div>
+
             </div>
           </div>
         </div>
